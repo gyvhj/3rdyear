@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select year and semester</title>
+    <style>
+        body{
+            font-family:Arial ,sans-serif;
+            margin:20px;
+        }
+        label,select,ul{
+         margin:10px 0;
+        display:block;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Select year and semester</h1>
+    <form>
+        <label for ="year">Year:</label>
+        <select id ="year">
+            <option value="">--select year--</option>
+            <option value="1st">1st</option>
+            <option value="2nd">2nd</option>
+            <option value="3rd">3rd</option>
+            <option value="4th">4th</option>
+             </select>
+    </form>
+    <h2>Subject:</h2>
+    <ul id="Subject-list"></ul>
+    <script>
+        const subjects={
+            "1st":{
+                "1st":["Mathematics 1 ", "Chemstry","Physics"],
+                "2nd":["Mathematics 2","Basic Electronic","CPNM"]
+            },
+            "2nd":{
+                "1st":["DSA","OOPs","COA"],
+                "2nd":["Software Engeering","Computer Network"."OOS"]
+             },
+             "3rd":{
+                "1st":["Operating System","Wireless","Cloud Computing"];
+                "2nd":["DAA","Multimedia","Web Technology"]
+             },
+             "4th":{
+                "1st":["Big Data","Machine Learning","Internet"],
+                "2nd":["Blockchain","natural Languages","AI"]
+             }
+            };
+            const yearSelect=document.getElementById("year");
+            const semesterSelect=document.getElementById("Semester");
+            const subjectlist=document.getElementById("subject-list");
+            function updateSubjects(){
+                const year=yearSelect.value;
+                const semester= semesterSelect.value;
+                subjectlist.innerHTML="";
+                if(year&&semester&&subjects[year]&&subject[year][semester]){
+                    subject[year][semester].forEach(subject=>{
+                        const li = document.createElement("li");
+                        li.textContent =subject;
+                        subjectsList.appendChiuld(li);
+
+                    });
+                }
+            }
+            yearselect.addEventListener("change",updateSubjects);
+            semesterSelect.addEventListener("change",updateSubject);
+    </script>
+</body>
+</html>
