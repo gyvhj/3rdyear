@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Chat</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+    <h1>ChatRoom</h1>
+
+    <div id="container1">
+        <div id="chatBox"></div>
+    </div>
+
+    <div id="container2">
+        <input type="text" id="messageInput" placeholder="Type a message..."
+            onkeydown="if(event.key === 'Enter'){sendMessage();}">
+    </div>
+
+    <script>
+        // Create a WebSocket connection to the server
+        const socket = new WebSocket('ws://localhost:8002/17/chat');
+
+        // When WebSocket is opened
+        socket.onopen = function (event) {
+            console.log('WebSocket connection established');
+        };
+
+        // When message is received from the server
+        socket.onmessage = function (event) {
+            console.log('Received message: ' + event.data);
+
+
+            const chatBox = document.getElementById('chatBox');
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('message');
+            newMessage.innerHTML = `<span class="sender">Other: </span>${event.data}`;
+            chatBox.appendChild(newMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            console.log('Messages in chat box:', chatBox.children.length);
+        };
+
+        // When WebSocket connection is closed
+        socket.onclose = function (event) {
+            console.log('WebSocket connection closed');
+        };
+
+        // When there's an error with WebSocket
+        socket.onerror = function (event) {
+            console.log('WebSocket error: ', event);
+        };
+
+        // Send message to the WebSocket server
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+
+            if (message.trim() !== '') {
+                console.log('Sending message: ' + message);
+
+                socket.send(message);
+
+                const chatBox = document.getElementById('chatBox');
+                const newMessage = document.createElement('div');
+                newMessage.classList.add('message');
+                newMessage.innerHTML = `<span class="sender">me: </span>${message}`;
+                chatBox.appendChild(newMessage);
+                chatBox.scrollTop = chatBox.scrollHeight;
+                messageInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>

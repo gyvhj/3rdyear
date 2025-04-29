@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Live Stock Prices</title>
+</head>
+<body>
+  <h1>Live Stock Prices</h1>
+  <p>AAPL: $<span id="aapl">--</span></p>
+  <p>MSFT: $<span id="msft">--</span></p>
+
+  <script>
+    const source = new EventSource("stocks");
+    source.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      document.getElementById("aapl").textContent = data.AAPL;
+      document.getElementById("msft").textContent = data.MSFT;
+    };
+  </script>
+</body>
+</html>
