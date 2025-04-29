@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        let data = {};
+
+        async function fetchData() {
+            try {
+                const response = await fetch('/9/states-and-districts.json'); 
+                data = await response.json(); 
+                populateStates();
+                populateDistricts();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Populate the state dropdown
+        function populateStates() {
+            const stateDropdown = document.getElementById("state");
+
+            // Create and add the default option for state dropdown
+            const defaultStateOption = document.createElement("option");
+            defaultStateOption.value = "";
+            defaultStateOption.text = "Choose a state";
+            defaultStateOption.disabled = true;
+            defaultStateOption.selected = true;
+            stateDropdown.appendChild(defaultStateOption);
+
+            // Add states to the dropdown
+            data.states.forEach(stateObj => {
+                const option = document.createElement("option");
+                option.value = stateObj.state;
+                option.text = stateObj.state;
+                stateDropdown.appendChild(option);
+            });
+        }
+
+        // Populate the district dropdown based on the selected state
+        function populateDistricts() {
+            const stateDropdown = document.getElementById("state");
+            const districtDropdown = document.getElementById("district");
+            const selectedState = stateDropdown.value;
+
+            // Clear existing options
+            districtDropdown.innerHTML = "";
+
+            // Create and add the default option for district dropdown
+            const defaultDistrictOption = document.createElement("option");
+            defaultDistrictOption.value = "";
+            defaultDistrictOption.text = "Choose a district";
+            defaultDistrictOption.disabled = true;
+            defaultDistrictOption.selected = true;
+            districtDropdown.appendChild(defaultDistrictOption);
+
+            // If a state is selected, add districts for that state
+            if (selectedState) {
+                const selectedStateObj = data.states.find(stateObj => stateObj.state === selectedState);
+                if (selectedStateObj) {
+                    selectedStateObj.districts.forEach(district => {
+                        const option = document.createElement("option");
+                        option.value = district;
+                        option.text = district;
+                        districtDropdown.appendChild(option);
+                    });
+                }
+            }
+        }
+
+        // Handle the form submission
+        function handleFormSubmit(event) {
+            event.preventDefault(); 
+
+            const stateDropdown = document.getElementById("state");
+            const districtDropdown = document.getElementById("district");
+
+            const selectedState = stateDropdown.value;
+            const selectedDistrict = districtDropdown.value;
+
+            const descriptionDiv = document.getElementById("description");
+
+            if (selectedState && selectedDistrict) {
+                descriptionDiv.innerHTML = `${selectedDistrict} is in ${selectedState}.`;
+            } else {
+                descriptionDiv.innerHTML = "Please select both a state and a district.";
+            }
+        }
+
+        window.onload = function() {
+            fetchData();
+            document.getElementById("state").addEventListener("change", populateDistricts);
+            document.getElementById("stateForm").addEventListener("submit", handleFormSubmit);
+        };
+    </script>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #5e6d77;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: block;
+            color: #555;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        input[type="submit"] {
+            padding: 12px 20px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #description {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        hr {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>State and District Selection</h1>
+        <form id="stateForm" method="POST" charset="utf-8">
+            <label for="state">State:</label>
+            <select id="state" name="state">
+                <!-- State options will be populated here -->
+            </select>
+
+            <label for="district">District:</label>
+            <select id="district" name="district">
+                <!-- District options will be populated here based on state selection -->
+            </select>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <div id="description">
+            <!-- The result will be displayed here after form submission -->
+        </div>
+    </div>
+</body>
+</html>

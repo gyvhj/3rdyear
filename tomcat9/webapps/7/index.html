@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bill Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+    <script>
+        function toggleDateInput() {
+            const payLaterRadio = document.getElementById("payLater");
+            const dateInputGroup = document.getElementById("dateInputGroup");
+
+            
+            if (payLaterRadio.checked) {
+                dateInputGroup.classList.remove("hidden");
+            } else {
+                dateInputGroup.classList.add("hidden");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Online Bill Payment</h1>
+    <form>
+        <div class="form-group">
+            <label>
+                <input type="radio" name="paymentOption" id="payNow" value="payNow" onclick="toggleDateInput()" checked>
+                Pay Now
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="paymentOption" id="payLater" value="payLater" onclick="toggleDateInput()">
+                Pay Later
+            </label>
+        </div>
+        <div id="dateInputGroup" class="form-group hidden">
+            <label for="paymentDate">Select Payment Date:</label>
+            <input type="date" id="paymentDate" name="paymentDate">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
