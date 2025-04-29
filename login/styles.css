@@ -1,33 +1,50 @@
-/* Simple style for the error message */
-.error {
-    color: red;
+body {
+  font-family: Arial, sans-serif;
+  background: rgb(169, 169, 169);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-h2 {
-    font-family: Arial, sans-serif;
-    color: #333;
+.login-container {
+  background: rgb(255, 255, 255);
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 300px;
 }
 
-form {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+.login-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
 }
 
 label {
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 input {
-    padding: 5px;
-    font-size: 14px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+#errorMsg {
+  color: rgb(255, 0, 0);
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 button {
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #ddd;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(37, 99, 235);
+  font-weight: bold;
+  border-radius: 5px;
 }
