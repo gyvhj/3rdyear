@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account</title>
+    <script>
+        function validateForm() {
+            const login = document.forms["regForm"]["loginName"].value;
+            const pass1 = document.forms["regForm"]["password"].value;
+            const pass2 = document.forms["regForm"]["confirmPassword"].value;
+            const email = document.forms["regForm"]["email"].value;
+            const phone = document.forms["regForm"]["phone"].value;
+
+            if (!login || !pass1 || !pass2 || !email  || !phone) {
+                alert("All fields are required.");
+                return false;
+            }
+
+            if (pass1 !== pass2) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            if (!/^\d{10}$/.test(phone)) {
+                alert("Phone must be 10 digits.");
+                return false;
+            }
+
+            if (!email.includes("@") || !email.includes(".")) {
+                alert("Invalid email address.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+            background-color: grey;
+        }
+        div{
+            padding-left: 10%;
+            padding-right:10%;
+            padding-top: 3%;
+            padding-bottom: 3%;
+            border: 10px inset black;
+            background-color: white;
+        }
+        #submit{
+            border: 0;
+            background-color: #0056b3;
+        }
+        input{
+            padding: 2.5%;
+            width:100%;
+        }
+        </style>
+</head>
+<body>
+    <div>
+    <h2>Create an Account</h2>
+    <form name="regForm" action="create.jsp" method="post" onsubmit="return validateForm();">
+        Login Name: <br><input type="text" name="loginName" required><br><br>
+        Password: <br><input type="password" name="password" required><br><br>
+        Confirm Password: <br><input type="password" name="confirmPassword" required><br><br>
+        Email: <br><input type="email" name="email" required><br><br>
+        Phone: <br><input type="text" name="phone" required><br><br>
+        <input type="submit" value="Create Account" id="submit">
+    </form><br>
+    <a href="login.jsp">Already have an account? Log In</a></div>
+</body>
+</html>

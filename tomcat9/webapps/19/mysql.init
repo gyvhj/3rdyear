@@ -1,0 +1,31 @@
+CREATE DATABASE university;
+USE university;
+
+CREATE TABLE department (
+    dept_id INT PRIMARY KEY AUTO_INCREMENT,
+    dept_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE student (
+    roll_number INT PRIMARY KEY,
+    name VARCHAR(100),
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id)
+);
+
+INSERT INTO department (dept_name) VALUES
+('Computer Science'),
+('Electrical Engineering'),
+('Mechanical Engineering'),
+('Civil Engineering'),
+('Biotechnology');
+
+INSERT INTO student (roll_number, name, dept_id) VALUES
+(101, 'Alice Johnson', 1),
+(102, 'Bob Smith', 2),
+(103, 'Charlie Lee', 1),
+(104, 'David Kumar', 3),
+(105, 'Emily Davis', 4),
+(106, 'Frank Thomas', 2),
+(107, 'Grace Wilson', 5),
+(108, 'Helen Zhao', 1);

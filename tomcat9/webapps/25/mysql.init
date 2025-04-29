@@ -1,0 +1,12 @@
+create database quiz;
+use quiz;
+
+CREATE TABLE questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_text TEXT,
+    optionA VARCHAR(255),
+    optionB VARCHAR(255),
+    optionC VARCHAR(255),
+    optionD VARCHAR(255),
+    answer VARCHAR(10)
+);

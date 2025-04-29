@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="question.xslt"?>
+
+<question-paper>
+    <question no="1">
+        <text>q1</text>
+        <optionA>option1</optionA>
+        <optionB>option2</optionB>
+        <optionC>option3</optionC>
+        <optionD>option4</optionD>
+        <answer value="optionA">option1</answer>
+    </question>
+
+   <question no="2">
+        <text>q2</text>
+        <optionA>option1</optionA>
+        <optionB>option2</optionB>
+        <optionC>option3</optionC>
+        <optionD>option4</optionD>
+        <answer value="optionB">option2</answer>
+    </question>
+   
+   <question no="3">
+        <text>q3</text>
+        <optionA>option1</optionA>
+        <optionB>option2</optionB>
+        <optionC>option3</optionC>
+        <optionD>option4</optionD>
+        <answer value="optionC">option3</answer>
+    </question>
+</question-paper>

@@ -3,28 +3,28 @@
 <question-paper>
     <question no="1">
         <text>q1</text>
-        <optionA>o1a</optionA>
-        <optionB>o1b</optionB>
-        <optionC>o1c</optionC>
-        <optionD>o1d</optionD>
-        <answer value="optionA">o1a</answer>
+        <optionA>option1</optionA>
+        <optionB>option2</optionB>
+        <optionC>option3</optionC>
+        <optionD>option4</optionD>
+        <answer value="optionA">option1</answer>
     </question>
 
    <question no="2">
         <text>q2</text>
-        <optionA>o2a</optionA>
-        <optionB>o2b</optionB>
-        <optionC>o2c</optionC>
-        <optionD>o2d</optionD>
-        <answer value="optionB">o2b</answer>
+        <optionA>option1</optionA>
+        <optionB>option2</optionB>
+        <optionC>option3</optionC>
+        <optionD>option4</optionD>
+        <answer value="optionB">option2</answer>
     </question>
    
    <question no="3">
         <text>q3</text>
-        <optionA>o3a</optionA>
-        <optionB>o3b</optionB>
-        <optionC>o3c</optionC>
-        <optionD>o3d</optionD>
-        <answer value="optionC">o3c</answer>
+        <optionA>option1</optionA>
+        <optionB>option2</optionB>
+        <optionC>option3</optionC>
+        <optionD>option4</optionD>
+        <answer value="optionC">option3</answer>
     </question>
 </question-paper>
