@@ -20,6 +20,7 @@
     <h2>Search by Department</h2>
     <form action="SearchByDept" method="get">
         Select Department:
+        
         <select name="dept_id">
             <%
                 try {

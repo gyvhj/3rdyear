@@ -963,3 +963,11 @@ InnoDB: of MySQL. Please close it to get rid of this error.
 InnoDB: The error means that another program is using InnoDB's files.
 InnoDB: This might be a backup or antivirus software or another instance
 InnoDB: of MySQL. Please close it to get rid of this error.
+250430  9:55:30  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
+250430  9:55:40  InnoDB: Operating system error number 32 in a file operation.
+InnoDB: The error means that another program is using InnoDB's files.
+InnoDB: This might be a backup or antivirus software or another instance
+InnoDB: of MySQL. Please close it to get rid of this error.
