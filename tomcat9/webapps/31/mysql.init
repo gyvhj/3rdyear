@@ -1,0 +1,59 @@
+CREATE DATABASE StudentMarksDB;
+
+USE StudentMarksDB;
+
+CREATE TABLE Students (
+    roll_no VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE Subjects (
+    subject_id VARCHAR(10) PRIMARY KEY,
+    subject_name VARCHAR(100)
+);
+
+CREATE TABLE Marks (
+    roll_no VARCHAR(10),
+    semester INT,
+    subject_id VARCHAR(10),
+    marks INT,
+    PRIMARY KEY (roll_no, semester, subject_id),
+    FOREIGN KEY (roll_no) REFERENCES Students(roll_no),
+    FOREIGN KEY (subject_id) REFERENCES Subjects(subject_id)
+);
+
+INSERT INTO Students (roll_no, name) VALUES 
+('S001', 'Aarav Sharma'),
+('S002', 'Neha Verma'),
+('S003', 'Raj Patel'),
+('S004', 'Ishita Singh'),
+('S005', 'Karan Mehta');
+
+INSERT INTO Subjects (subject_id, subject_name) VALUES 
+('SUB101', 'Mathematics'),
+('SUB102', 'Physics'),
+('SUB103', 'Chemistry'),
+('SUB104', 'Computer Science'),
+('SUB105', 'English');
+
+INSERT INTO Marks (roll_no, semester, subject_id, marks) VALUES
+-- Semester 1
+('S001', 1, 'SUB101', 85),
+('S001', 1, 'SUB102', 78),
+('S001', 1, 'SUB103', 82),
+('S002', 1, 'SUB101', 88),
+('S002', 1, 'SUB102', 74),
+('S002', 1, 'SUB103', 80),
+
+-- Semester 2
+('S001', 2, 'SUB104', 91),
+('S001', 2, 'SUB105', 87),
+('S003', 2, 'SUB104', 76),
+('S003', 2, 'SUB105', 81),
+
+-- Semester 3
+('S004', 3, 'SUB101', 67),
+('S004', 3, 'SUB102', 72),
+('S005', 3, 'SUB103', 79),
+('S005', 3, 'SUB104', 85);
+

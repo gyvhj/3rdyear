@@ -1,0 +1,19 @@
+CREATE DATABASE IF NOT EXISTS ComputerStore;
+USE ComputerStore;
+
+CREATE TABLE Components (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    component_type VARCHAR(50),     -- e.g., HDD, RAM
+    manufacturer VARCHAR(100),
+    model VARCHAR(100),
+    price DECIMAL(10, 2)
+);
+INSERT INTO Components (component_type, manufacturer, model, price) VALUES
+('HDD', 'Seagate', 'ST1000DM010', 3000.00),
+('HDD', 'WD', 'WD10EZEX', 3200.00),
+('RAM', 'Corsair', 'Vengeance 8GB', 2500.00),
+('RAM', 'Kingston', 'HyperX 8GB', 2400.00),
+('Motherboard', 'ASUS', 'Prime B450M', 7000.00),
+('Processor', 'Intel', 'i5-10400', 11000.00),
+('Monitor', 'Dell', 'E2216H', 8500.00),
+('CD/DVD R/W', 'LG', 'GH24NSD1', 1200.00);

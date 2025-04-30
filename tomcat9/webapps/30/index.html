@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Build Your PC</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f4f8;
+            padding: 50px;
+        }
+
+        .container {
+            width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Configure Your Computer</h2>
+    <form action="calculate_price.jsp" method="post" onsubmit="return validateForm()">
+        <label>HDD Model</label>
+        <select name="HDD">
+            <option value="">-- Select HDD --</option>
+            <option value="ST1000DM010">Seagate ST1000DM010</option>
+            <option value="WD10EZEX">WD WD10EZEX</option>
+        </select>
+
+        <label>RAM Model</label>
+        <select name="RAM">
+            <option value="">-- Select RAM --</option>
+            <option value="Vengeance 8GB">Corsair Vengeance 8GB</option>
+            <option value="HyperX 8GB">Kingston HyperX 8GB</option>
+        </select>
+
+        <label>Motherboard Model</label>
+        <select name="Motherboard">
+            <option value="">-- Select Motherboard --</option>
+            <option value="Prime B450M">ASUS Prime B450M</option>
+        </select>
+
+        <label>Processor Model</label>
+        <select name="Processor">
+            <option value="">-- Select Processor --</option>
+            <option value="i5-10400">Intel i5-10400</option>
+        </select>
+
+        <label>Monitor Model</label>
+        <select name="Monitor">
+            <option value="">-- Select Monitor --</option>
+            <option value="E2216H">Dell E2216H</option>
+        </select>
+
+        <label>CD/DVD R/W</label>
+        <select name="CDDVD">
+            <option value="">-- Select CD/DVD --</option>
+            <option value="GH24NSD1">LG GH24NSD1</option>
+        </select>
+
+        <button type="submit">Get Total Price</button>
+    </form>
+</div>
+
+<script>
+function validateForm() {
+    const selects = document.querySelectorAll("select");
+    for (let select of selects) {
+        if (select.value === "") {
+            alert("Please select an option for all components.");
+            return false;
+        }
+    }
+    return true;
+}
+</script>
+</body>
+</html>

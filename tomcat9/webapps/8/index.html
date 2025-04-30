@@ -3,77 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select year and semester</title>
+    <title>Year & Semester Subjects</title>
     <style>
-        body{
-            font-family:Arial ,sans-serif;
-            margin:20px;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
         }
-        label,select,ul{
-         margin:10px 0;
-        display:block;
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        ul li {
+            background: #007BFF;
+            color: white;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
         }
     </style>
-    
 </head>
 <body>
-    <h1>Select year and semester</h1>
-    <form>
-        <label for ="year">Year:</label>
-        <select id ="year">
-            <option value="">--select year--</option>
+
+    <div class="container">
+        <h2>Select Year & Semester</h2>
+
+        <label for="year">Year:</label>
+        <select id="year" onchange="updateSubjects()">
             <option value="1st">1st</option>
             <option value="2nd">2nd</option>
             <option value="3rd">3rd</option>
             <option value="4th">4th</option>
-             </select>
-             <label for ="Semester">Semester:</label>
-        <select id ="Semester">
-            <option value="">--select semester--</option>
+        </select>
+
+        <label for="semester">Semester:</label>
+        <select id="semester" onchange="updateSubjects()">
             <option value="1st">1st</option>
             <option value="2nd">2nd</option>
+        </select>
 
-             </select>
-    </form>
-    <h2>Subject:</h2>
-    <ul id="Subject-list"></ul>
+        <h3>Subjects:</h3>
+        <ul id="subjectList"></ul>
+    </div>
+
     <script>
-        const subjects={
-            "1st":{
-                "1st":["Mathematics 1 ", "Chemstry","Physics"],
-                "2nd":["Mathematics 2","Basic Electronic","CPNM"]
+        const subjects = {
+            "1st": {
+                "1st": ["Mathematics I", "Physics", "Chemistry"],
+                "2nd": ["Mathematics II", "Electronics", "CPNM"]
             },
-            "2nd":{
-                "1st":["DSA","OOPs","COA"],
-                "2nd":["Software Engeering","Computer Network","OOS"]
-             },
-             "3rd":{
-                "1st":["Operating System","Wireless","Cloud Computing"],
-                "2nd":["DAA","Multimedia","Web Technology"]
-             },
-             "4th":{
-                "1st":["Big Data","Machine Learning","Internet"],
-                "2nd":["Blockchain","natural Languages","AI"]
-             }
-            };
-            const yearSelect=document.getElementById("year");
-            const semesterSelect=document.getElementById("Semester");
-            const subjectlist=document.getElementById("subject-list");
-            function updateSubjects(){
-                const year=yearSelect.value;
-                const semester= semesterSelect.value;
-                subjectlist.innerHTML="";
-                if(year&&semester&&subjects[year]&&subject[year][semester]){
-                    subject[year][semester].forEach(subject=>{
-                        const li = document.createElement("li");
-                        li.textContent =subject;
-                        subjectsList.appendChiuld(li);
-
-                    });
-                }
+            "2nd": {
+                "1st": ["Data Structures", "COA", "OOP in C++"],
+                "2nd": ["Computer Networks", "DBMS", "OOP in Java"]
+            },
+            "3rd": {
+                "1st": ["Cloud Computing", "Operating Systems", "TOC-CD"],
+                "2nd": ["Multimedia", "Algorithms", "Information Security"]
+            },
+            "4th": {
+                "1st": ["Machine Learning", "Cloud Computing", "Artificial Intelligence"],
+                "2nd": ["Big Data", "Blockchain", "Internet of Things"]
             }
-            yearSelect.addEventListener("change",updateSubjects);
-            semesterSelect.addEventListener("change",updateSubjects);
+        };
+
+        function updateSubjects() {
+            let year = document.getElementById("year").value;
+            let semester = document.getElementById("semester").value;
+            let subjectList = document.getElementById("subjectList");
+
+            subjectList.innerHTML = "";
+
+            let selectedSubjects = subjects[year][semester];
+
+            selectedSubjects.forEach(subject => {
+                let li = document.createElement("li");
+                li.textContent = subject;
+                subjectList.appendChild(li);
+            });
+        }
+
+        window.onload = updateSubjects;
     </script>
+
 </body>
 </html>

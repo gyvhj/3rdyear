@@ -3,6 +3,63 @@
 <head>
     <title>Take Quiz</title>
 </head>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #f9f9f9, #e0eafc);
+        margin: 0;
+        padding: 40px;
+        color: #333;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #2c3e50;
+    }
+
+    form {
+        max-width: 700px;
+        margin: auto;
+        background: #ffffff;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    input[type="submit"] {
+        background-color: #007BFF;
+        color: white;
+        font-size: 16px;
+        border: none;
+        padding: 12px 20px;
+        margin-top: 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        display: block;
+        width: 100%;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .question-block {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
 <body>
     <h2>MCQ Test</h2>
     <form action="evaluate.jsp" method="post">
